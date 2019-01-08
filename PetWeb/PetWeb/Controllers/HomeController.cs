@@ -17,14 +17,14 @@ namespace PetWeb.Controllers
 
         public IActionResult About()
         {
-            ViewData["Message"] = "PetWeb description page.";
+            ViewData["Message"] = "Cats and Dogs";
 
             return View();
         }
 
         public IActionResult Contact()
         {
-            ViewData["Message"] = "PetWeb contact page.";
+            ViewData["Message"] = "Your contact page.";
 
             return View();
         }
