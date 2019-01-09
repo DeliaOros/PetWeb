@@ -19,7 +19,7 @@ namespace PetWeb.Controllers
         public IActionResult List(FurColor? color, PetGender? gender)
         {
             var dogs = PopulateDoglist();
-            if (color.HasValue && gender.HasValue)
+            if (color.HasValue | gender.HasValue)
             {
                 dogs = dogs.Where(x => x.Color == color.Value).Where(x => x.Gender == gender.Value).ToList();
                 return View(dogs);
@@ -32,23 +32,23 @@ namespace PetWeb.Controllers
             List<Dog> dogs = new List<Dog>();
             dogs.Add(new Dog()
             {
-                Color = FurColor.black,
-                Gender = PetGender.male
+                Color = FurColor.Black,
+                Gender = PetGender.Male
             });
             dogs.Add(new Dog()
             {
-                Color = FurColor.white,
-                Gender = PetGender.male
+                Color = FurColor.White,
+                Gender = PetGender.Male
             });
             dogs.Add(new Dog()
             {
-                Color = FurColor.yellow,
-                Gender = PetGender.female
+                Color = FurColor.Yellow,
+                Gender = PetGender.Female
             });
             dogs.Add(new Dog()
             {
-                Color = FurColor.yellow,
-                Gender = PetGender.male
+                Color = FurColor.Yellow,
+                Gender = PetGender.Male
             });
             return dogs;
 

@@ -19,7 +19,7 @@ namespace PetWeb.Controllers
         public IActionResult List(FurColor? color, PetGender? gender)
         {
             var cats = Populatelist();
-            if (color.HasValue && gender.HasValue)
+            if (color.HasValue | gender.HasValue)
             {
                 cats = cats.Where(x => x.Color == color.Value).Where(x => x.Gender == gender.Value).ToList();
 
@@ -34,23 +34,23 @@ namespace PetWeb.Controllers
             List<Cat> cats = new List<Cat>();
             cats.Add(new Cat()
             {
-                Color = FurColor.black,
-                Gender = PetGender.female
+                Color = FurColor.Black,
+                Gender = PetGender.Female
             });
             cats.Add(new Cat()
             {
-                Color = FurColor.black,
-                Gender = PetGender.female
+                Color = FurColor.Black,
+                Gender = PetGender.Female
             });
             cats.Add(new Cat()
             {
-                Color = FurColor.white,
-                Gender = PetGender.male
+                Color = FurColor.White,
+                Gender = PetGender.Male
             });
             cats.Add(new Cat()
             {
-                Color = FurColor.yellow,
-                Gender = PetGender.male
+                Color = FurColor.Yellow,
+                Gender = PetGender.Male
             });
             return cats;
         }

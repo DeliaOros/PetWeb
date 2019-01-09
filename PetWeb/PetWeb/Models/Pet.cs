@@ -7,14 +7,14 @@ namespace PetWeb.Models
 {
     public enum FurColor
     {
-        black,
-        white,
-        yellow
+        Black,
+        White,
+        Yellow
     }
     public enum PetGender
     {
-        male,
-        female
+        Male,
+        Female
     }
 
     public class Pet
