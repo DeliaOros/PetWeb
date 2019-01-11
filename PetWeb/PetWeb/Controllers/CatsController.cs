@@ -19,13 +19,19 @@ namespace PetWeb.Controllers
         public IActionResult List(FurColor? color, PetGender? gender)
         {
             var cats = Populatelist();
-            if (color.HasValue | gender.HasValue)
+            if (color.HasValue)
             {
-                cats = cats.Where(x => x.Color == color.Value).Where(x => x.Gender == gender.Value).ToList();
+                cats = cats.Where(x => x.Color == color.Value).ToList();
 
                 return View(cats);
-
             }
+            if (gender.HasValue)
+            {
+                cats = cats.Where(x => x.Gender == gender.Value).ToList();
+
+                return View(cats);
+            }
+
             return View(cats);
         }
 
