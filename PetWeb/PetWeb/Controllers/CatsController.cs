@@ -14,51 +14,51 @@ namespace PetWeb.Controllers
             return View();
         }
 
-        [HttpGet]
+        //[HttpGet]
 
-        public IActionResult List(FurColor? color, PetGender? gender)
-        {
-            var cats = Populatelist();
-            if (color.HasValue)
-            {
-                cats = cats.Where(x => x.Color == color.Value).ToList();
+        //public IActionResult List(FurColor? color, PetGender? gender)
+        //{
+        //    var cats = Populatelist();
+        //    if (color.HasValue)
+        //    {
+        //        cats = cats.Where(x => x.Color == color.Value).ToList();
 
-                return View(cats);
-            }
-            if (gender.HasValue)
-            {
-                cats = cats.Where(x => x.Gender == gender.Value).ToList();
+        //        return View(cats);
+        //    }
+        //    if (gender.HasValue)
+        //    {
+        //        cats = cats.Where(x => x.Gender == gender.Value).ToList();
 
-                return View(cats);
-            }
+        //        return View(cats);
+        //    }
 
-            return View(cats);
-        }
+        //    return View(cats);
+        //}
 
-        private List<Cat> Populatelist()
-        {
-            List<Cat> cats = new List<Cat>();
-            cats.Add(new Cat()
-            {
-                Color = FurColor.Black,
-                Gender = PetGender.Female
-            });
-            cats.Add(new Cat()
-            {
-                Color = FurColor.Black,
-                Gender = PetGender.Female
-            });
-            cats.Add(new Cat()
-            {
-                Color = FurColor.White,
-                Gender = PetGender.Male
-            });
-            cats.Add(new Cat()
-            {
-                Color = FurColor.Yellow,
-                Gender = PetGender.Male
-            });
-            return cats;
-        }
+        //private List<Cat> Populatelist()
+        //{
+        //    List<Cat> cats = new List<Cat>();
+        //    cats.Add(new Cat()
+        //    {
+        //        Color = FurColor.Black,
+        //        Gender = PetGender.Female
+        //    });
+        //    cats.Add(new Cat()
+        //    {
+        //        Color = FurColor.Black,
+        //        Gender = PetGender.Female
+        //    });
+        //    cats.Add(new Cat()
+        //    {
+        //        Color = FurColor.White,
+        //        Gender = PetGender.Male
+        //    });
+        //    cats.Add(new Cat()
+        //    {
+        //        Color = FurColor.Yellow,
+        //        Gender = PetGender.Male
+        //    });
+        //    return cats;
+        //}
     }
 }

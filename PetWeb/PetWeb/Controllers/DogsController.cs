@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using PetWeb.Models;
+using PetWeb.Services;
 
 namespace PetWeb.Controllers
 {
@@ -14,49 +15,42 @@ namespace PetWeb.Controllers
             return View();
         }
 
+        private DogRepository dogRepository;
+
+        public DogsController()
+        {
+            dogRepository = DogRepository.Instance;
+        }
+
+        //GET:/Dogs/List
+        public IActionResult List()
+        {
+            return View(dogRepository.GetDogs());
+        }
+
         [HttpGet]
 
-        public IActionResult List(FurColor? color, PetGender? gender)
+        public IActionResult Edit(int id)
         {
-            var dogs = PopulateDoglist();
-            if (color.HasValue)
-            {
-                dogs = dogs.Where(x => x.Color == color.Value).ToList();
-                return View(dogs);
-            }
-            if (gender.HasValue)
-            {
-                dogs = dogs.Where(x => x.Gender == gender.Value).ToList();
-                return View(dogs);
-            }
-            return View(dogs);
+            var allExistingDogs = dogRepository.GetDogs();
+
+            Dog dogToEdit = allExistingDogs.Find(x => x.Id == id);
+
+            return View(dogToEdit);
         }
 
-        private List<Dog> PopulateDoglist()
+        [HttpPost]
+        public IActionResult Edit(Dog model)
         {
-            List<Dog> dogs = new List<Dog>();
-            dogs.Add(new Dog()
+            if (ModelState.IsValid)
             {
-                Color = FurColor.Black,
-                Gender = PetGender.Male
-            });
-            dogs.Add(new Dog()
-            {
-                Color = FurColor.White,
-                Gender = PetGender.Male
-            });
-            dogs.Add(new Dog()
-            {
-                Color = FurColor.Yellow,
-                Gender = PetGender.Female
-            });
-            dogs.Add(new Dog()
-            {
-                Color = FurColor.Yellow,
-                Gender = PetGender.Male
-            });
-            return dogs;
+                var dogToUpdate = dogRepository.GetDogs().Find(x => x.Id == model.Id);
+                TryUpdateModelAsync(dogToUpdate);
 
+            }
+            return View(model);
         }
+
+        
     }
 }

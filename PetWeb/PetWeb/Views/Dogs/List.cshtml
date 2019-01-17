@@ -4,7 +4,7 @@
     ViewData["Title"] = "List of Dogs";
 }
 
-<h2>List of Dogs</h2>
+<h2>List</h2>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -18,11 +18,36 @@
             <th>
                 @Html.DisplayNameFor(model => model.Gender)
             </th>
+            @*<th>
+            @Html.DisplayNameFor(model => model.Id)
+        </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.NickName)
+            </th>
+            @*<th>
+            @Html.DisplayNameFor(model => model.DateOfBirth)
+        </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.DayOfBirth)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MonthOfBirth)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.YearOfBirth)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Owner.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Owner.Email)
+            </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+        @foreach (var item in Model)
+        {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Color)
@@ -30,12 +55,36 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Gender)
             </td>
+            @*<td>
+            @Html.DisplayFor(modelItem => item.Id)
+        </td>*@
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.DisplayFor(modelItem => item.NickName)
+            </td>
+            @*<td>
+            @Html.DisplayFor(modelItem => item.DateOfBirth)
+        </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.DayOfBirth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MonthOfBirth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.YearOfBirth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Owner.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Owner.Email)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
                 @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
                 @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
             </td>
         </tr>
-}
+        }
     </tbody>
 </table>
