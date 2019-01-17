@@ -20,7 +20,7 @@ namespace PetWeb.Models
 
     public class Pet
     {
-        [MaxLength(8)]
+        
         private DateTime dateOfBirth;
 
         //private Owner owner;
@@ -29,21 +29,21 @@ namespace PetWeb.Models
 
         public PetGender Gender { get; set; }
 
-        [MinLength(1)]
+        
         public int Id { get; set; }
 
-        [MinLength(1), MaxLength(20)]
+        
         public string NickName { get; set; }
 
         public Owner Owner { get; set; }
 
-        [Range(1, 31)]
+        [Range (1,31)]
         public int DayOfBirth { get; set; }
 
-        [Range(1, 12)]
+        
         public int MonthOfBirth { get; set; }
 
-        [MinLength(4)]
+       
         public int YearOfBirth { get; set; }
 
         public DateTime DateOfBirth

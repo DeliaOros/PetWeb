@@ -51,6 +51,24 @@ namespace PetWeb.Controllers
             return View(model);
         }
 
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View(new Dog());
+        }
+
+        [HttpPost]
+        public IActionResult Create(Dog model)
+        {
+            if (ModelState.IsValid)
+            {
+                var maxId = dogRepository.GetDogs().Max(x => x.Id) + 1;
+                model.Id = maxId;
+                dogRepository.AddDogs(model);
+                return RedirectToAction("List");
+            }
+            return View(model);
+        }
         
     }
 }
