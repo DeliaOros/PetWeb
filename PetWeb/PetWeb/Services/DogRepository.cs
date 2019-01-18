@@ -106,5 +106,10 @@ namespace PetWeb.Services
             return dogs;
         }
 
+        public void RemoveDog(Dog dogToRemove)
+        {
+            dogs.Remove(dogToRemove);
+        }
+
     }
 }

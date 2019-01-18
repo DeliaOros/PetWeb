@@ -69,6 +69,32 @@ namespace PetWeb.Controllers
             }
             return View(model);
         }
-        
+
+        [HttpGet]
+        public ActionResult Delete(int id)
+        {
+            var allExistingDogs = dogRepository.GetDogs();
+
+            Dog dogToDelete = allExistingDogs.Find(x => x.Id == id);
+
+            return View(dogToDelete);
+
+        }
+
+        [HttpPost]
+        public IActionResult Delete(Dog dogToDelete)
+        {
+            var allExistingDogs = dogRepository.GetDogs();
+
+            Dog dogToRemove = allExistingDogs.Find(x => x.Id == dogToDelete.Id);            
+
+            dogRepository.RemoveDog(dogToRemove);
+
+            return RedirectToAction("List");
+        }
+
+
+
     }
 }
+

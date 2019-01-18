@@ -9,8 +9,8 @@ namespace PetWeb.Models
     public class Owner
     {
         [Required]
-        [MaxLength(20)]
-        public string Name { get; set; }
+        [MinLength(3)]
+        public string Name { get; set; }        
         
         [EmailAddress]
         public string Email { get; set; }
@@ -26,5 +26,9 @@ namespace PetWeb.Models
         {
             return $"{this.Name}, {this.Email}";
         }
+    }
+
+    internal class MinlenghtAttribute : Attribute
+    {
     }
 }
