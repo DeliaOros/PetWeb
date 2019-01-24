@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using PetWeb.Models;
 
 namespace PetWeb.Controllers
@@ -11,7 +12,7 @@ namespace PetWeb.Controllers
     public class HomeController : Controller
     {
         public IActionResult Index()
-        {
+        {           
             return View();
         }
 

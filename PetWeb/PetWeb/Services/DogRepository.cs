@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace PetWeb.Services
 {
+    //SINGLETON pattern
     public class DogRepository
     {
 
@@ -25,6 +26,66 @@ namespace PetWeb.Services
                 return instance;
             }
         }
+
+        
+        public void AddDogs(Dog dogToAdd)
+        {
+
+            dogs.Add(dogToAdd);
+
+        }
+
+        public List<Dog> GetDogs()
+        {
+            return dogs;
+        }
+
+        private int GetIndex(int id)
+        {
+            for (int i = 0; i < dogs.Count; i++)
+            {
+                if (dogs[i].Id == id)
+                    return i;
+            }
+
+            return -1;
+        }
+
+        public Dog GetDogById(int id)
+        {
+            for (int i = 0; i < dogs.Count; i++)
+            {
+                if (dogs[i].Id == id)
+                    return dogs[i];
+            }               
+
+            return null;
+        }
+
+        public void RemoveDogById(int id)//used also for Gina, when delete without asking both on button Delete in List or in browser dogs/delete/id, pair with Delete2 method
+        {
+            int index = GetIndex(id);
+            if (index >= 0)
+            {
+                dogs.RemoveAt(index);
+            }
+        }
+
+        public void RemoveDogToDelete(Dog model)
+        {
+            var dogToDelete = dogs.Find(x => x.Id == model.Id);
+
+            dogs.Remove(dogToDelete);
+
+        }
+
+        //See Delete3 method commentented in DogController
+        //public void Delete1(int id)
+        //{
+        //    int index = GetIndex(id);
+        //    if (index >= 0)
+        //        Dogs.RemoveAt(index);
+        //}
 
         private static List<Dog> InitializeList()
         {
@@ -94,22 +155,7 @@ namespace PetWeb.Services
             return dogs;
         }
 
-        public void AddDogs(Dog dogToAdd)
-        {
 
-            dogs.Add(dogToAdd);
-
-        }
-
-        public List<Dog> GetDogs()
-        {
-            return dogs;
-        }
-
-        public void RemoveDog(Dog dogToRemove)
-        {
-            dogs.Remove(dogToRemove);
-        }
 
     }
 }

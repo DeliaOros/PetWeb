@@ -1,4 +1,4 @@
-﻿@model PetWeb.Models.Dog
+﻿@model PetWeb.Models.Cat
 
 @{
     ViewData["Title"] = "Create";
@@ -7,11 +7,11 @@
 
 <h2>Create</h2>
 
-<h4>Dog</h4>
+<h4>Cat</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create" controller="Dogs">
+        <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group" hidden>
                 <label asp-for="Id" class="control-label"></label>
@@ -26,6 +26,7 @@
 
                 @*@Html.ValidationMessage("NickName", "Loosely typed error validation ", new { @class = "text-danger" })*@
             </div>
+
             @*dropdown list*@
             <div class="form-group">
                 <label asp-for="Gender" class="control-label"></label>
@@ -45,15 +46,15 @@
                 <span asp-validation-for="Color" class="text-danger"></span>
             </div>
             @*<div class="form-group">
-            <label asp-for="Gender" class="control-label"></label>
-            <input asp-for="Gender" class="form-control" />
-            <span asp-validation-for="Gender" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="Color" class="control-label"></label>
-            <input asp-for="Color" class="form-control" />
-            <span asp-validation-for="Color" class="text-danger"></span>
-        </div>*@
+                <label asp-for="Color" class="control-label"></label>
+                <input asp-for="Color" class="form-control" />
+                <span asp-validation-for="Color" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Gender" class="control-label"></label>
+                <input asp-for="Gender" class="form-control" />
+                <span asp-validation-for="Gender" class="text-danger"></span>
+            </div>*@
             <div class="form-group">
                 <label asp-for="DayOfBirth" class="control-label"></label>
                 <input asp-for="DayOfBirth" class="form-control" />
@@ -91,7 +92,7 @@
     </div>
 </div>
 
-<div hidden>
-    <a asp-action="List">Back to List</a>
+<div >
+    <a asp-action="Index">Back to List</a>
 </div>
 

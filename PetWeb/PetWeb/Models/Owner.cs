@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
@@ -8,19 +9,24 @@ namespace PetWeb.Models
 {
     public class Owner
     {
-        [Required]
-        [MinLength(3)]
-        public string Name { get; set; }        
+       
+      
         
-        [EmailAddress]
+        public string Name { get; set; }    
+              
         public string Email { get; set; }
 
 
-        //public Owner(string Name, string emailAddress)
-        //{
-        //    this.Name = Name;
-        //    this.Email = emailAddress;
-        //}
+        [DisplayName("Owner")]
+        public string GetNameAndEmail
+        {
+            get
+            {
+                return $@"Name: {Name}, Email: {Email}";
+
+            }
+        }
+
 
         public override string ToString()
         {
@@ -28,7 +34,5 @@ namespace PetWeb.Models
         }
     }
 
-    internal class MinlenghtAttribute : Attribute
-    {
-    }
+   
 }
