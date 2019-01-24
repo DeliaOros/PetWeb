@@ -26,34 +26,46 @@
 
                 @*@Html.ValidationMessage("NickName", "Loosely typed error validation ", new { @class = "text-danger" })*@
             </div>
-            @*dropdown list*@
+
             <div class="form-group">
                 <label asp-for="Gender" class="control-label"></label>
-                <select asp-for="Gender" class="form-control">
-                    <option value="@Model.Gender" selected="selected">@PetGender.Female</option>
-                    <option value="@Model.Gender">@PetGender.Male</option>
-                </select>
+                @Html.DropDownListFor(m => m.Gender, new SelectList(Enum.GetValues(typeof(PetGender))))
                 <span asp-validation-for="Gender" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <label asp-for="Color" class="control-label"></label>
-                <select asp-for="Color" class="form-control">
-                    <option value="@Model.Color" selected="selected">@FurColor.Black</option>
-                    <option value="@Model.Color">@FurColor.White</option>
-                    <option value="@Model.Color">@FurColor.Yellow</option>
-                </select>
+                @Html.DropDownListFor(m => m.Color, new SelectList(Enum.GetValues(typeof(FurColor))))
                 <span asp-validation-for="Color" class="text-danger"></span>
             </div>
+
             @*<div class="form-group">
-            <label asp-for="Gender" class="control-label"></label>
-            <input asp-for="Gender" class="form-control" />
-            <span asp-validation-for="Gender" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="Color" class="control-label"></label>
-            <input asp-for="Color" class="form-control" />
-            <span asp-validation-for="Color" class="text-danger"></span>
-        </div>*@
+                    <label asp-for="Gender" class="control-label"></label>
+                    <select asp-for="Gender" class="form-control">
+                        <option value="@Model.Gender">@PetGender.Female</option>
+                        <option value="@Model.Gender">@PetGender.Male</option>
+                    </select>
+                    <span asp-validation-for="Gender" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Color" class="control-label"></label>
+                    <select asp-for="Color" class="form-control">
+                        <option value="@Model.Color">@FurColor.Black</option>
+                        <option value="@Model.Color">@FurColor.White</option>
+                        <option value="@Model.Color">@FurColor.Yellow</option>
+                    </select>
+                    <span asp-validation-for="Color" class="text-danger"></span>
+                </div>*@
+            @*<div class="form-group">
+                    <label asp-for="Gender" class="control-label"></label>
+                    <input asp-for="Gender" class="form-control" />
+                    <span asp-validation-for="Gender" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Color" class="control-label"></label>
+                    <input asp-for="Color" class="form-control" />
+                    <span asp-validation-for="Color" class="text-danger"></span>
+                </div>*@
             <div class="form-group">
                 <label asp-for="DayOfBirth" class="control-label"></label>
                 <input asp-for="DayOfBirth" class="form-control" />

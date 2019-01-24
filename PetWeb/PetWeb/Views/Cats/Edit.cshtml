@@ -1,4 +1,5 @@
 ﻿@model PetWeb.Models.Cat
+@using System.Text
 
 @{
     ViewData["Title"] = "Edit";
@@ -23,23 +24,28 @@
                 <input asp-for="NickName" class="form-control" />
                 <span asp-validation-for="NickName" class="text-danger"></span>
             </div>
+
             <div class="form-group">
-            <label asp-for="Gender" class="control-label"></label>
-            <select asp-for="@Model.Gender" class="form-control">
-                <option value="Gender" selected="selected">@PetGender.Female</option>
-                <option value="Gender">@PetGender.Male</option>
-            </select>
-            <span asp-validation-for="Gender" class="text-danger"></span>
-        </div>
-        <div class="form-group">
+                <label asp-for="Gender" class="control-label"></label>
+                @Html.DropDownListFor(m => m.Gender, new SelectList(Enum.GetValues(typeof(PetGender))))
+                <span asp-validation-for="Gender" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Color" class="control-label"></label>
+                @Html.DropDownListFor(m => m.Color, new SelectList(Enum.GetValues(typeof(FurColor))))
+                <span asp-validation-for="Color" class="text-danger"></span>
+            </div>
+
+            @*<div class="form-group">
             <label asp-for="Color" class="control-label"></label>
             <select asp-for="Color" class="form-control">
-                <option value="@Model.Color" selected="selected">@FurColor.Black</option>
-                <option value="@Model.Color.">@FurColor.White</option>
+                <option value="@Model.Color">@FurColor.Black</option>
+                <option value="@Model.Color">@FurColor.White</option>
                 <option value="@Model.Color">@FurColor.Yellow</option>
             </select>
             <span asp-validation-for="Color" class="text-danger"></span>
-        </div>
+        </div>*@
 
             @*<div class="form-group">
             <label asp-for="Color" class="control-label"></label>
