@@ -1,0 +1,100 @@
+﻿@model PetWeb.Models.Cat
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+
+<h4>Cat</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group" hidden>
+                <label asp-for="Id" class="control-label"></label>
+                <input asp-for="Id" class="form-control" />
+                <span asp-validation-for="Id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NickName" class="control-label"></label>
+                <input asp-for="NickName" class="form-control" />
+                <span asp-validation-for="NickName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+            <label asp-for="Gender" class="control-label"></label>
+            <select asp-for="@Model.Gender" class="form-control">
+                <option value="Gender" selected="selected">@PetGender.Female</option>
+                <option value="Gender">@PetGender.Male</option>
+            </select>
+            <span asp-validation-for="Gender" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Color" class="control-label"></label>
+            <select asp-for="Color" class="form-control">
+                <option value="@Model.Color" selected="selected">@FurColor.Black</option>
+                <option value="@Model.Color.">@FurColor.White</option>
+                <option value="@Model.Color">@FurColor.Yellow</option>
+            </select>
+            <span asp-validation-for="Color" class="text-danger"></span>
+        </div>
+
+            @*<div class="form-group">
+            <label asp-for="Color" class="control-label"></label>
+            <input asp-for="Color" class="form-control" />
+            <span asp-validation-for="Color" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Gender" class="control-label"></label>
+            <input asp-for="Gender" class="form-control" />
+            <span asp-validation-for="Gender" class="text-danger"></span>
+        </div>*@
+            <div class="form-group">
+                <label asp-for="DayOfBirth" class="control-label"></label>
+                <input asp-for="DayOfBirth" class="form-control" />
+                <span asp-validation-for="DayOfBirth" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MonthOfBirth" class="control-label"></label>
+                <input asp-for="MonthOfBirth" class="form-control" />
+                <span asp-validation-for="MonthOfBirth" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="YearOfBirth" class="control-label"></label>
+                <input asp-for="YearOfBirth" class="form-control" />
+                <span asp-validation-for="YearOfBirth" class="text-danger"></span>
+            </div>
+            <div class="form-group" hidden>
+                <label asp-for="DateOfBirth" class="control-label"></label>
+                <input asp-for="DateOfBirth" class="form-control" />
+                <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+            </div>
+            @*<div class="form-group" hidden>
+            <label asp-for="DateOfBirthDisplay" class="control-label"></label>
+            <input asp-for="DateOfBirthDisplay" class="form-control" />
+            <span asp-validation-for="DateOfBirthDisplay" class="text-danger"></span>
+        </div>*@
+            <div class="form-group">
+                <label asp-for="Owner.Name" class="control-label"></label>
+                <input asp-for="Owner.Name" class="form-control" />
+                <span asp-validation-for="Owner.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Owner.Email" class="control-label"></label>
+                <input asp-for="Owner.Email" class="form-control" />
+                <span asp-validation-for="Owner.Email" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="List">Back to List</a>
+</div>
+
